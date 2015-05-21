@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<script src={{ url_for('static', filename='d3.v3.js') }}></script>
+
+</head>
+<body>
+<style>
+div.bar{
+    display: inline-block;
+            width: 20px;
+            height: 75px;
+            background-color: teal;
+            margin-right:2px;
+}
+</style>
+
+<script>
+ 
+ var data = {{data|tojson|safe}};
+ var data = JSON.parse(data);
+ //alert(data.data); //testing
+ //var dataset = data.data;
+ var dataset = data;
+//alert(dataset);
+d3.select("body").selectAll("div")
+	.data(dataset)
+	.enter()
+	.append("div")
+	.attr("class","bar")
+	.style("height", function(d){
+		var barHeight = d * 2;
+		return barHeight + "px";
+	});
+
+</script>
+
+</body>
+</html>
