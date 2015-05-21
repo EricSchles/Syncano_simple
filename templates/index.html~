@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+
+<form method="POST" action="">
+
+
+<label>Vote for toppings:</label><input type="text" name="vote"></input>
+<input type="submit" value="submit">
+
+</form>
+
+<ul>
+{% for vote in votes %}
+ <li>{{vote}}</li>
+{% endfor %}
+</ul>
+</body>
+</html>

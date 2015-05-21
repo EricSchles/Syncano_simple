@@ -1,0 +1,12 @@
+import syncano
+import pickle
+
+creds = pickle.load(open("creds","rb"))
+
+con = syncano.connect(email=creds["email"],password=creds["password"])
+instance = con.Instance
+voting = list(instance.please.all())[0]
+voting.classes.create(name="voting",schema='[{"name":"vote","type":"string"}]')
+vote = voting.classes.get(name="voting")
+obj = vote.objects.create(vote="cheezeburger")
+obj.save()
